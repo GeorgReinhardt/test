@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="de">
+    <link rel="icon" href="smiteicon.ico" >
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Gods</title>
+</head>
+
+<body>
+    
+</body>
+<main id="main">
+    <button id="button">Go!</button>
+    <p id="randomGod"></p>
+    <button id="buttonWar">Warrior!</button>
+    <p id="randomWar"></p>
+    <button id="buttonMag">Mage!</button>
+    <p id="randomMag"></p>
+    <button id="buttonHun">Hunter!</button>
+    <p id="randomHun"></p>
+    <button id="buttonAss">Assassin!</button>
+    <p id="randomAss"></p>
+    <button id="buttonGua">Guardian!</button>
+    <p id="randomGua"></p>
+</main>
+
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+Uhrzeit?</button>
+<p><a href="index.html" title="Zurück">Zurück!</a></p>
+<p id="demo"></p>
+
+
+<script ...>
+
+    var gods = ["Achilles", "Agni", "Ah Muzen Cab", "Ah Puch", "Amaterasu", "Anhur", "Anubis", "Ao Kuang", "Aphrodite", "Apollo", "Arachne", "Ares", "Artemis", "Artio", "Athena", "Awilix", "Bacchus", "Bakasura", "Baron Samedi", "Bastet", "Bellona", "Cabrakan", "Camazotz", "Cerberus", "Cernunnos", "Chaac", "Chang'e", "Chernobog", "Chiron", "Chronos", "Cu Chulainn", "Cupid", "Da Ji", "Discordia", "Erlang Shen", "Fafnir", "Fenrir", "Freya", "Ganesha", "Geb", "Guan Yu", "Hachiman", "Hades", "He Bo", "Hel", "Hera", "Hercules", "Horus", "Hou Yi", "Hun Batz", "Isis", "Izanami", "Janus", "Jing Wei", "Jormungandr", "Kali", "Khepri", "King Arthur", "Kukulkan", "Kumbhakarna", "Kuzenbo", "Loki", "Medusa", "Mercury", "Merlin", "Ne Zha", "Neith", "Nemesis", "Nike", "Nox", "Nu Wa", "Odin", "Osiris", "Pele", "Poseidon", "Ra", "Raijin", "Rama", "Ratatoskr", "Ravana", "Scylla", "Serqet", "Set", "Skadi", "Sobek", "Sol", "Sun Wukong", "Susano", "Sylvanus", "Terra", "Thanatos", "The Morrigan", "Thor", "Thoth", "Tyr", "Ullr", "Vamana", "Vulcan", "Xbalanque", "Xing Tian", "Ymir", "Zeus", "Zhong Kui", "Olorun", "Persephone", "Yemoja", "Heimdallr", "Mulan", "Baba Yaga", "Cthulhu", "Tsukuyomi"];
+    var gesamt = gods.length;
+    //document.write(gesamt) <-Prüfen, wie viele
+
+    var warriors = ["Achilles", "Amaterasu", "Bellona", "Chaac", "Cu Chulainn", "Erlang Shen", "Guan Yu", "Hercules", "Horus", "King Arthur", "Mulan", "Nike", "Odin", "Osiris", "Sun Wukong", "Tyr", "Vamana"];
+
+    var mages = ["Agni", "Ah Puch", "Anubis", "Ao Kuang", "Aphrodite", "Baba Yaga", "Baron Samedi", "Chang'e", "Chronos", "Discordia", "Freya", "Hades", "He Bo", "Hel", "Hera", "Isis", "Janus", "Kukulkan", "Merlin", "Nox", "Nu Wa", "Olorun", "Persephone", "Poseidon", "Ra", "Raijin", "Scylla", "Sol", "The Morrigan", "Thoth", "Vulcan", "Zeus", "Zhong Kui"];
+
+    var hunters = ["Ah Muzen Cab", "Anhur", "Apollo", "Artemis", "Cernunnos", "Chernobog", "Chiron", "Cupid", "Hachiman", "Heimdallr", "Hou Yi", "Izanami", "Jing Wei", "Medusa", "Neith", "Rama", "Skadi", "Ullr", "Xbalanque"];
+
+    var assassins = ["Arachne", "Awilix", "Bakasura", "Bastet", "Camazotz", "Da Ji", "Fenrir", "Hun Batz", "Kali", "Loki", "Mercury", "Ne Zha", "Nemesis", "Pele", "Ratatoskr", "Ravana", "Serqet", "Set", "Susano", "Thanatos", "Thor", "Tsukuyomi"];
+
+    var guardians = ["Ares", "Artio", "Athena", "Bacchus", "Cabrakan", "Cerberus", "Cthulhu", "Fafnir", "Ganesha", "Geb", "Jormungandr", "Khepri", "Kumbhakarna", "Kuzenbo", "Sobek", "Sylvanus", "Terra", "Xing Tian", "Yemoja", "Ymir"];
+    var gods2 = warriors.concat(mages).concat(hunters).concat(assassins).concat(guardians);
+
+
+    
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    };
+    function chooseGod(list,textId) {
+        return function () {
+            var random = getRandomInt(list.length);
+            document.getElementById(textId).innerHTML = "<b>Random God: " + list[random] + "</b>";
+        }
+    };
+    function sum(l) {
+        var c = 0;
+        /*
+        var index=0;
+        while(index < l.length){
+            c += l[index];
+            index = index+1;
+        }
+        */
+        for(i = 0; i < l.length; i++){
+            c += l[i];
+        }
+        return c;
+    }
+
+
+    // Funktion beim laden der Seite aufrufen
+    window.addEventListener("load", function () {
+
+        // Überprüfen ob die ID (Button) auf der Seite vorhanden ist (Optional).
+        if (document.getElementById("button") != null) {
+
+            // Der ID den Event-Handler 'click' hinzufügen,
+            // als Event die Funktion 'test' aufrufen.
+            document.getElementById("button").addEventListener("click", chooseGod(gods,"randomGod"));
+            document.getElementById("buttonWar").addEventListener("click", chooseGod(warriors,"randomWar"));
+            document.getElementById("buttonMag").addEventListener("click", chooseGod(mages,"randomMag"));
+            document.getElementById("buttonHun").addEventListener("click", chooseGod(hunters,"randomHun"));
+            document.getElementById("buttonAss").addEventListener("click", chooseGod(assassins,"randomAss"));
+            document.getElementById("buttonGua").addEventListener("click", chooseGod(guardians,"randomGua"));
+        }
+    });
+
+
+
+
+
+</script>
+
+</html>
